@@ -1,10 +1,12 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import os 
 
-# Load model
-model, model_features = joblib.load("D:/ai-air-traffic-management\models\delay_model.pkl")
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+model_path = os.path.join(BASE_DIR, "models", "delay_model.pkl")
 
+model, model_features = joblib.load(model_path)
 st.title("📍 Flight Delay Predictor")
 
 # --- Inputs ---

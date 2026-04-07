@@ -3,19 +3,9 @@ import pandas as pd
 import sys
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+existing_df = pd.read_csv("data/simulated_aircraft_positions.csv")
 
-file_path = os.path.join(BASE_DIR, "data", "simulated_aircraft_positions.csv")
 
-existing_df = pd.read_csv(file_path)
-
-st.write("ROOT FILES:", os.listdir())
-
-if os.path.exists("data"):
-    st.write("DATA FILES:", os.listdir("data"))
-else:
-    st.write("NO DATA FOLDER FOUND") 
-    
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils')))
 

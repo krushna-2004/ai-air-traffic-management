@@ -3,6 +3,13 @@ import pandas as pd
 import sys
 import os
 
+file_path = os.path.join("data", "simulated_aircraft_positions.csv")
+
+if not os.path.exists(file_path):
+    raise FileNotFoundError(f"{file_path} NOT FOUND. Available: {os.listdir('data') if os.path.exists('data') else 'NO DATA DIR'}")
+
+existing_df = pd.read_csv(file_path)
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils')))
 

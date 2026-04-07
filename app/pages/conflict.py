@@ -3,9 +3,19 @@ import pandas as pd
 import sys
 import os
 
-url = "https://raw.githubusercontent.com/krushna-2004/ai-air-traffic-management/main/data/simulated_aircraft_positions.csv"
-existing_df = pd.read_csv(url)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+file_path = os.path.join(BASE_DIR, "data", "simulated_aircraft_positions.csv")
+
+existing_df = pd.read_csv(file_path)
+
+st.write("ROOT FILES:", os.listdir())
+
+if os.path.exists("data"):
+    st.write("DATA FILES:", os.listdir("data"))
+else:
+    st.write("NO DATA FOLDER FOUND") 
+    
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils')))
 
@@ -14,7 +24,7 @@ from utils.geo_utils import predict_position, is_conflict
 st.markdown("<h1 style='font-size: 25px;'>🛫 Flight Conflict Checker</h1>", unsafe_allow_html=True)
 st.markdown("Enter a new flight's details. The system will check for any conflicts in the airspace 10 minutes from now.")
 
-existing_df = pd.read_csv("D:/ai-air-traffic-management/data/simulated_aircraft_positions.csv")
+# existing_df = pd.read_csv("D:/ai-air-traffic-management/data/simulated_aircraft_positions.csv")
 
 # 🔄 Two columns: left for input, right for result
 left_col, right_col = st.columns(2)

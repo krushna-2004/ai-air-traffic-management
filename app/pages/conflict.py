@@ -3,12 +3,10 @@ import pandas as pd
 import sys
 import os
 
-# st.write("ROOT FILES:", os.listdir())
+BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+data_path = os.path.join(BASE_DIR, "data", "simulated_aircraft_positions.csv")
 
-# if os.path.exists("data"):
-#     st.write("DATA FILES:", os.listdir("data"))
-# else:
-#     st.write("NO DATA FOLDER FOUND") 
+existing_df = pd.read_csv(data_path)
     
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils')))
@@ -18,7 +16,7 @@ from utils.geo_utils import predict_position, is_conflict
 st.markdown("<h1 style='font-size: 25px;'>🛫 Flight Conflict Checker</h1>", unsafe_allow_html=True)
 st.markdown("Enter a new flight's details. The system will check for any conflicts in the airspace 10 minutes from now.")
 
-existing_df = pd.read_csv("../data/simulated_aircraft_positions.csv")
+# existing_df = pd.read_csv("../data/simulated_aircraft_positions.csv")
 
 # 🔄 Two columns: left for input, right for result
 left_col, right_col = st.columns(2)

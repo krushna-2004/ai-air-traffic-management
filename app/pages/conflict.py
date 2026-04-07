@@ -3,8 +3,8 @@ import pandas as pd
 import sys
 import os
 
-existing_df = pd.read_csv("data/simulated_aircraft_positions.csv")
-
+url = "https://raw.githubusercontent.com/krushna-2004/ai-air-traffic-management/main/data/simulated_aircraft_positions.csv"
+existing_df = pd.read_csv(url)
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils')))

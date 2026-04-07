@@ -3,10 +3,12 @@ import pandas as pd
 import sys
 import os
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../"))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 file_path = os.path.join(BASE_DIR, "data", "simulated_aircraft_positions.csv")
 
 existing_df = pd.read_csv(file_path)
+
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'utils')))
